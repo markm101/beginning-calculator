@@ -3,25 +3,27 @@ print('1. Addition, 2. Subtraction, 3. Multiplication, 4. Division, 5. Roots, 6.
 choice = int(input("Enter a decided on option: "))
 
 
-numbers = input("Enter your chosen numbers, each followed by a comma  ")
+numbers = input("Enter your chosen numbers, each followed by a comma (example: 12,3,45,1,)  ")
 
-#input to list
-
-#TO - DO, FIX DOUBLE DIGIT NUMBERS, (loop until a comma?) (use break when meeting a comma to skip?) goodnight
+#numbers to list:
+#TO - DO, Double digits fixed, now fix the last set of numbers instead of just making the user end with a comma
 list_input = []
+temp = ''
 for i in str(numbers):
-    if i != ',':
-        list_input.append(int(i))
-
-
-
+    if (i != ','):
+        temp += i
+    else:
+        list_input.append(int(temp))
+        temp = ''
+        continue
+    
 
 #Addition
 if choice == 1:
     total = 0
     for i in list_input:
         total += i
-    print("Your Added Total Is: ", total)
+    print(f"Your Added Total Is: {total}")
 
 
 #Subtraction
@@ -32,5 +34,18 @@ if choice == 2:
         total -= i
     print(f"Subtracting every number leads to: {total}")
 
+#Multiplication
+if choice == 3:
+    total = list_input[0]
+    list_input.pop(0)
+    for i in list_input:
+        total *= i
+    print(f"Multiplying each number leads to: {total}")
 
-
+#Division
+if choice == 4:
+    total = list_input[0]
+    list_input.pop(0)
+    for i in list_input:
+        total /= i
+    print(f"Dividing each number leads to: {int(total)}")
