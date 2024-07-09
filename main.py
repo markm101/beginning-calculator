@@ -1,51 +1,85 @@
-choices = [1, 2, 3, 4, 5, 6]
-print('1. Addition, 2. Subtraction, 3. Multiplication, 4. Division, 5. Roots, 6. Exponents ')
-choice = int(input("Enter a decided on option: "))
+#Global / Unchanging Variables
+list_nums = []
+
+#String to List
+def string_to_list(n):
+    list_input = []
+    temp = ''
+    for i in str(n):
+        if (i != ','):
+            temp += i
+        else:
+            list_input.append(int(temp))
+            temp = ''
+            continue
+    return list_input
 
 
-numbers = input("Enter your chosen numbers, each followed by a comma (example: 12,3,45,1,)  ")
 
-#numbers to list:
-#TO - DO, Double digits fixed, now fix the last set of numbers instead of just making the user end with a comma
-list_input = []
-temp = ''
-for i in str(numbers):
-    if (i != ','):
-        temp += i
-    else:
-        list_input.append(int(temp))
-        temp = ''
-        continue
-    
+#math functions:
 
 #Addition
-if choice == 1:
+def add(lis):
     total = 0
-    for i in list_input:
+    for i in lis:
         total += i
     print(f"Your Added Total Is: {total}")
 
 
-#Subtraction
-if choice == 2:
-    total = list_input[0]
-    list_input.pop(0)
-    for i in list_input:
+def sub(lis):
+    total = lis[0]
+    lis.pop(0)
+    for i in lis:
         total -= i
     print(f"Subtracting every number leads to: {total}")
 
 #Multiplication
-if choice == 3:
-    total = list_input[0]
-    list_input.pop(0)
-    for i in list_input:
+def mult(lis):
+    total = lis[0]
+    lis.pop(0)
+    for i in lis:
         total *= i
     print(f"Multiplying each number leads to: {total}")
 
 #Division
-if choice == 4:
-    total = list_input[0]
-    list_input.pop(0)
-    for i in list_input:
+def div(lis):
+    total = lis[0]
+    lis.pop(0)
+    for i in lis:
         total /= i
     print(f"Dividing each number leads to: {int(total)}")
+
+
+def exp(lis):
+
+    base = lis[0]
+    print(f"{lis[0]} to the power of {lis[1]} is equal to: {lis[0] ** lis[1]}")
+
+
+
+
+
+#main
+
+print('1. Addition, 2. Subtraction, 3. Multiplication, 4. Division, 5. Exponents, 6. Roots ')
+choice = int(input("Enter a decided on option: "))
+
+if choice == 5:
+    list_nums = string_to_list(input("Enter your base followed by your exponent (base, exponent,)  "))
+    exp(list_nums)
+else:
+
+    list_nums = string_to_list(input("Enter your chosen numbers, each followed by a comma (example: 12,3,45,1,)  "))
+
+
+    if choice == 1:  #user selected 1, add
+        add(list_nums)
+
+    if choice == 2: #user selected 2, subtract
+        sub(list_nums) 
+
+    if choice == 3: #user selected 3, multiply
+        mult(list_nums)
+
+    if choice == 4:
+        div(list_nums) #user selected 4, divide
