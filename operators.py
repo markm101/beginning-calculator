@@ -47,7 +47,7 @@ def div(lis):
         total /= i
     print(f"Dividing each number leads to: {int(total)}")
 
-
+#exponents
 def exp(lis):
 
     base = lis[0]
